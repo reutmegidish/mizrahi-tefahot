@@ -1,0 +1,9 @@
+.home-page {
+  gap: 2.5rem;
+}
+
+.home-page-img {
+  min-width: 100%;
+  max-height: auto;
+  object-fit: contain;
+}
