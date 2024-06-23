@@ -48,10 +48,10 @@ const router = createBrowserRouter(
       path: '*',
       element: <NotFound />,
     },
-  ],
-  {
-    basename: '/mizrahi-tefahot/',
-  }
+  ]
+  // {
+  //   basename: '/mizrahi-tefahot/',
+  // }
 )
 console.log(router.basename)
 function App() {
