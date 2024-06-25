@@ -1,4 +1,4 @@
-.navbar {
+.primary-navbar {
   width: 100%;
   height: 100%;
   background-color: rgb(247, 247, 247);
@@ -16,12 +16,12 @@ nav li {
   width: auto;
 }
 
-.navbar-logo {
+.primary-navbar-logo {
   height: 100%;
   padding: 0.1rem;
 }
 
-.li-login-navbar {
+.li-login-primary-navbar {
   height: 100%;
   background-color: #ff780b;
   padding: 1rem;

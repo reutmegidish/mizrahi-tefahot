@@ -8,6 +8,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
+  const [idSearchQuery, setIdSearchQuery] = useState('')
 
   const login = (userData) => {
     setUser(userData)
@@ -21,6 +22,8 @@ export const AuthProvider = ({ children }) => {
     user,
     login,
     logout,
+    idSearchQuery,
+    setIdSearchQuery,
     isAdmin: user?.isAdmin || false,
   }
 

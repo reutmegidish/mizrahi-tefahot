@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { getData } from '../../api/api'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
+import { ID_PATTERN, PASSWORD_PATTERN } from '../../constants/regexPatterns'
 
 // TODO: handle token & secure data
 const Login = () => {
@@ -13,28 +14,20 @@ const Login = () => {
   const [error, setError] = useState('')
 
   // TODO:JS for functions
-  const validateUserId = (userId) => {
-    return /^\d{9}$/.test(userId)
-  }
-
-  const validatePassword = (password) => {
-    // Password must be at least 6 characters with at least one uppercase letter and at least one number
-    return /^(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{6}$/.test(password)
-  }
+  const validateUserId = ID_PATTERN.test(userId)
+  const validatePassword = PASSWORD_PATTERN.test(password)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
 
-    if (!validateUserId(userId)) {
-      setError('User ID must be 9 digits')
+    if (!validateUserId) {
+      setError('Invalid ID, please try again')
       return
     }
-
-    if (!validatePassword(password)) {
-      setError(
-        'Password must be at least 6 characters with at least one uppercase letter and one number'
-      )
+    // change logic => for old psd, check data anyway id id valid
+    if (!validatePassword) {
+      setError('Invalid password, please try again')
 
       return
     }
@@ -76,7 +69,7 @@ const Login = () => {
         <div>
           <img src="./images/logo/login-logo.png" alt="login-logo" />
         </div>
-
+        {/* TODO: use commponent */}
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
             <label htmlFor="user-id">User ID:</label>

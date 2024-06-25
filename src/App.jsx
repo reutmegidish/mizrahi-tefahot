@@ -1,20 +1,27 @@
-import './App.css'
-import './utils/css/utils.css'
-
-import { HomePage, Login, NotFound } from './pages'
-import PrimaryLayout from './components/Layouts/PrimaryLayout/PrimaryLayout'
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import { AuthProvider } from './contexts/AuthContext'
 import ProtectedRoute from './routes/ProtectedRoute'
-import AdminPanel from './pages/AdminPanel/AdminPanel/AdminPanel'
-import Actions from './pages/AdminPanel/Actions/Actions'
+
+import DynamicLayout from './Layouts/DynamicLayout/DynamicLayout'
+import {
+  HomePage,
+  Login,
+  NotFound,
+  Actions,
+  AdminPanel,
+  UsersTable,
+} from './pages'
+
+import './App.css'
+import './utils/css/utils.css'
+import AddUser from './pages/AdminPanel/AddUser/AddUser'
 
 const router = createBrowserRouter(
   [
     {
       path: '/',
-      element: <PrimaryLayout />,
+      element: <DynamicLayout />,
       children: [
         {
           index: true,
@@ -39,6 +46,14 @@ const router = createBrowserRouter(
             {
               path: 'actions',
               element: <Actions />,
+            },
+            {
+              path: 'users-data',
+              element: <UsersTable adminOnly={true} />,
+            },
+            {
+              path: 'add-user',
+              element: <AddUser />,
             },
           ],
         },

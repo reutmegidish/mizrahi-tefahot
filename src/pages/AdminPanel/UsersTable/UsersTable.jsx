@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -8,8 +8,12 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/system'
-import { getData } from '../../api/api'
+import { depositCashData, getData } from '../../../api/api'
+import { TABLE_TAGS } from '../../../constants/constans'
+import { useParams } from 'react-router-dom'
+import { useAuth } from '../../../contexts/AuthContext'
 
+// TODO: use commponent for style and table, refactor the code
 const StyledTableContainer = styled(TableContainer)({
   maxWidth: '100%',
   margin: '0 auto',
@@ -35,35 +39,40 @@ const ResponsiveTableCell = styled(TableCell)({
   },
 })
 
-const MyTable = () => {
-  // TODO: useContext for globaldata
+const UsersTable = () => {
+  const { userId } = useParams()
   const [data, setData] = useState([])
+  const [refetch, setRefetch] = useState(false)
 
-  // TODO: Handels error
+  const { idSearchQuery, setIdSearchQuery } = useAuth()
+
+  // TODO: fix bug-reftch all users (after Deposit user by search ID)
   useEffect(() => {
     const userData = async () => {
       try {
-        const response = await getData()
+        const response = await getData(idSearchQuery)
         if (response) {
-          setData(response)
+          setData(Array.isArray(response) ? response : [response])
+          setIdSearchQuery('')
         }
       } catch (error) {
         console.error('error', error)
       }
     }
     userData()
-  }, [])
+  }, [refetch, userId])
 
-  const handleDeposit = (id) => {
-    console.log(`Deposit for id ${id}`)
-  }
+  const handleDeposit = async (id) => {
+    const amount = parseFloat(prompt('How much?'))
 
-  const handleWithdraw = (id) => {
-    console.log(`Withdraw for id ${id}`)
-  }
-
-  const handleTransfer = (id) => {
-    console.log(`Transfer for id ${id}`)
+    const updatedUser = data.find((user) => user.id === id)
+    if (!updatedUser) {
+      return
+    }
+    updatedUser.cash += amount
+    await depositCashData(id, updatedUser)
+    alert('Successfully added money')
+    setRefetch((prev) => !prev)
   }
 
   const handleRemove = (id) => {
@@ -79,18 +88,7 @@ const MyTable = () => {
       <Table>
         <StyledTableHead>
           <TableRow>
-            {[
-              'Name',
-              'ID',
-              'Email',
-              'Age',
-              'Cash',
-              'Accounts',
-              'Deposit',
-              'Withdraw',
-              'Transfer',
-              'Remove',
-            ].map((header) => (
+            {TABLE_TAGS.map((header) => (
               <ResponsiveTableCell key={header}>{header}</ResponsiveTableCell>
             ))}
           </TableRow>
@@ -103,16 +101,10 @@ const MyTable = () => {
               <ResponsiveTableCell>{row.email}</ResponsiveTableCell>
               <ResponsiveTableCell>{row.age}</ResponsiveTableCell>
               <ResponsiveTableCell>{row.cash}</ResponsiveTableCell>
-              <ResponsiveTableCell>{row.accounts}</ResponsiveTableCell>
               <ResponsiveTableCell>
                 <Button onClick={() => handleDeposit(row.id)}>Deposit</Button>
               </ResponsiveTableCell>
-              <ResponsiveTableCell>
-                <Button onClick={() => handleWithdraw(row.id)}>Withdraw</Button>
-              </ResponsiveTableCell>
-              <ResponsiveTableCell>
-                <Button onClick={() => handleTransfer(row.id)}>Transfer</Button>
-              </ResponsiveTableCell>
+
               <ResponsiveTableCell>
                 <Button onClick={() => handleRemove(row.id)}>Remove</Button>
               </ResponsiveTableCell>
@@ -124,4 +116,4 @@ const MyTable = () => {
   )
 }
 
-export default MyTable
+export default UsersTable

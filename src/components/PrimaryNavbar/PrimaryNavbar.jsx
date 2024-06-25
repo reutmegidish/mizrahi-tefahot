@@ -1,18 +1,18 @@
 import { NavLink } from 'react-router-dom'
-import './Navbar.css'
+import './PrimaryNavbar.css'
 import { useAuth } from '../../contexts/AuthContext'
 
 const NAVBAR_LOGO_SRC = './images/logo/navbar-logo.png'
-
-function Navbar() {
+// TODO: refactor and use map()
+function PrimaryNavbar() {
   const { user, logout } = useAuth()
   return (
-    <nav className="navbar d-flex flex-row space-between  align-center ">
+    <nav className="primary-navbar d-flex flex-row space-between  align-center ">
       <ul>
         <li>
           <NavLink className="home-link" to="/">
             <img
-              className="navbar-logo"
+              className="primary-navbar-logo"
               src={NAVBAR_LOGO_SRC}
               alt={'mizrahi-tefahot-logo'}
             />
@@ -21,7 +21,7 @@ function Navbar() {
       </ul>
 
       <ul>
-        <li className="li-login-navbar">
+        <li className="li-login-primary-navbar">
           {user && user.id ? (
             <NavLink
               className={({ isActive }) => (isActive ? 'active-page' : '')}
@@ -44,4 +44,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default PrimaryNavbar

@@ -1,3 +1,7 @@
+export { default as Actions } from './AdminPanel/Actions/Actions'
+export { default as AdminPanel } from './AdminPanel/AdminPanel/AdminPanel'
+export { default as Users } from './AdminPanel/Users/Users'
 export { default as HomePage } from './HomePage/HomePage'
-export { default as NotFound } from './NotFound/NotFound'
 export { default as Login } from './Login/Login'
+export { default as NotFound } from './NotFound/NotFound'
+export { default as UsersTable } from './AdminPanel/UsersTable/UsersTable'

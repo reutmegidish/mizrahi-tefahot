@@ -16,8 +16,9 @@
   width: 70%;
 }
 
-.admin-panel-img-container {
-  width: 100%;
+.admin-panel-img {
+  max-width: 100%;
+  height: auto;
 }
 
 .admin-panel-img {
