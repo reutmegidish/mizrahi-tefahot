@@ -23,22 +23,11 @@ This project is a Bank Admin Panel created using Vite and React. It utilizes Moc
 - **Show All Users**: Display a list of all users.
 - **Filter Users**: Filter users by cash amount and an additional criterion (e.g., credit amount).
 
-### Advanced Features (Ninja Task)
-
-- **Active Users Only**: Ensure inactive users cannot perform or receive transactions. Add a filter for active users with specified cash amounts.
-- **Show User Details Advanced**: Display details of a user by their cash/credit/name, etc.
-
 ### Pages
 
 1. **Home Page**: Overview and navigation.
 2. **User Management**: Add, update, and delete users.
 3. **Transactions**: Perform deposits, withdrawals, and transfers.
-
-## Requirements
-
-- Use React Context for global state management.
-- Validate user actions and handle edge cases with appropriate error messages.
-- Ensure the UI is user-friendly and responsive.
 
 ## Setup
 
@@ -75,7 +64,7 @@ Deploy the project to Netlify. It is recommended to set up the deployment before
 
 ### Netlify and GitHub Links
 
-- **Netlify Link**: [Your Netlify Link Here]
+- **Netlify Link**: [Your Netlify Link Here](https://mizrahi-tefahot.netlify.app/)]
 - **GitHub Repository**: [Your GitHub Repository Link Here]
 
 ## Admin Login Details
