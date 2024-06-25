@@ -1,4 +1,3 @@
-export { default as Actions } from './AdminPanel/Actions/Actions'
 export { default as AdminPanel } from './AdminPanel/AdminPanel/AdminPanel'
 export { default as Users } from './AdminPanel/Users/Users'
 export { default as HomePage } from './HomePage/HomePage'

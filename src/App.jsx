@@ -4,14 +4,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import ProtectedRoute from './routes/ProtectedRoute'
 
 import DynamicLayout from './Layouts/DynamicLayout/DynamicLayout'
-import {
-  HomePage,
-  Login,
-  NotFound,
-  Actions,
-  AdminPanel,
-  UsersTable,
-} from './pages'
+import { HomePage, Login, NotFound, AdminPanel, UsersTable } from './pages'
 
 import './App.css'
 import './utils/css/utils.css'
@@ -43,10 +36,10 @@ const router = createBrowserRouter(
               index: true,
               element: <AdminPanel adminOnly={true} />,
             },
-            {
-              path: 'actions',
-              element: <Actions />,
-            },
+            // {
+            //   path: 'actions',
+            //   element: <Actions />,
+            // },
             {
               path: 'users-data',
               element: <UsersTable adminOnly={true} />,
