@@ -36,7 +36,7 @@ This project is a Bank Admin Panel created using Vite and React. It utilizes Moc
 
 ### Netlify and GitHub Links
 
-- **Netlify Link**: [(https://mizrahi-tefahot.netlify.app/)]
+- **Netlify Link**: [https://mizrahi-tefahot.netlify.app/]
 
 ## Admin Login Details
 
