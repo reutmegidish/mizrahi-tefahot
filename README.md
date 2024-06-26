@@ -8,7 +8,7 @@ This project is a Bank Admin Panel created using Vite and React. It utilizes Moc
 
 ### User Management
 
-- **Add Users**: Form to add users with passport ID, cash (default 0), credit (default 100, but adjustable in the form), and isActive (default true).
+- **Add Users**: Form to add users with passport ID.
 - **Update Credit**: Form to update a user's credit (positive numbers only).
 - **Deposit Cash**: Form to deposit cash to a user by passport ID.
 
