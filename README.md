@@ -25,7 +25,7 @@ This project is a Bank Admin Panel created using Vite and React. It utilizes Moc
 
 ## Setup
 
-1. Initialize a new Vite project with React JavaScript/TypeScript.
+1. Initialize a new Vite project with React JavaScript.
 
    ```bash
    npm create vite@latest bank-admin-panel --template react
