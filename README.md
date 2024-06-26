@@ -46,11 +46,8 @@ This project is a Bank Admin Panel created using Vite and React. It utilizes Moc
 ## Usage
 
 1. **Home Page**: Navigate through the application using the navigation links.
-2. **User Management**: Add  update, and delete users.
-2. **User Management**: Add ש
-   and update users.
-4. **Transactions**: Perform deposits.
-5. **View User Details**: View details of a specific user by their passport ID.
+2. **User Management**: Add and update users.
+3. **View User Details**: View details of a specific user by their passport ID.
 
 ## License
 
